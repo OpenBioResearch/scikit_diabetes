@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project uses Scikit-learn to explore and model the diabetes dataset available within the library. The primary goal is to build a predictive model for diabetes progression using the K-Nearest Neighbors algorithm. The project also includes an analysis of feature correlations to understand the relationships between different variables and the target outcome.
+This project uses Scikit-learn to explore and model the diabetes dataset available within the library. The primary goal is to build a predictive model for diabetes progression using the K-Nearest Neighbors algorithm. The project also includes an analysis of feature correlations to understand the relationships between different variables and the target outcome. This project is most simply run using google colab.
 
 ## Usage
 The diabetes_sklearn.py script performs the following steps:
