@@ -2,9 +2,10 @@
 This script applies Lasso regression (L1 regularization) to the scikit-learn 
 diabetes dataset to predict diabetes progression. It performs feature selection 
 to identify the most important predictors and evaluates model performance using
-Mean Absolute Error (MAE). A residual plot is generated to visualize prediction 
-errors and saved for analysis.
+Mean Absolute Error (MAE). A residual plot for lasso regression should show no 
+clear pattern if the model fits well. 
 """
+
 import os
 import numpy as np
 import matplotlib.pyplot as plt
@@ -14,11 +15,11 @@ from sklearn.linear_model import Lasso
 from sklearn.feature_selection import SelectFromModel
 from sklearn.metrics import mean_absolute_error
 
-# Create output directory if it doesn't exist
+
 output_dir = "outputs"
 os.makedirs(output_dir, exist_ok=True)
 
-# Load and split data
+
 try:
     data = load_diabetes()  # Load the data and assign to 'data'
     X, y = data.data, data.target
@@ -39,40 +40,45 @@ except Exception as e:
     print(f"Error during Lasso regression: {e}")
     exit(1)
 
-# Evaluate on test set
 try:
     y_pred = lasso_new.predict(model.transform(X_test))
     mae = mean_absolute_error(y_test, y_pred)
     print(f"Model Mean Absolute Error (with feature selection): {mae:.2f}")
     print(
         "Selected features:",
-        np.array(data.feature_names)[model.get_support()],  # Use data.feature_names
+        np.array(data.feature_names)[model.get_support()],  
     )
 except Exception as e:
     print(f"Error during model evaluation: {e}")
     exit(1)
 
-# Create residual plot with explanations
-plt.figure(figsize=(8, 6))
+plt.figure(figsize=(10, 8))  
 plt.scatter(y_pred, y_test - y_pred)
 plt.axhline(y=0, color="r", linestyle="-")
 plt.xlabel("Predicted Values")
 plt.ylabel("Residuals")
-plt.title("Residual Plot for Lasso Regression\nExplanations:")
+plt.title("Residual Plot for Lasso Regression")
 
-# Add plot explanations with automatic wrapping
-plt.text(
-    0.05,
-    0.95,
-    "The residual plot helps assess model fit.\nIdeally, residuals should be "
-    "randomly scattered around zero with no clear patterns.",
-    transform=plt.gca().transAxes,
-    horizontalalignment="left",
-    verticalalignment="top",
-    wrap=True,
+textstr = f"MAE: {mae:.2f}\nSelected Features: {', '.join(np.array(data.feature_names)[model.get_support()])}"
+plt.figtext(
+    0.5, 
+    0.01, 
+    textstr,
+    horizontalalignment="center",  
+    fontsize=12,  
+    weight = 'bold',
+    bbox=dict(facecolor='lightblue', alpha=0.5), 
+    wrap=True, 
 )
-
-# Save plot
+plt.figtext(
+    0.5,
+    -0.05,
+    "The residual plot helps assess model fit. Ideally, residuals should be "
+    "randomly scattered around zero with no clear patterns.",
+    horizontalalignment="center",  
+    fontsize=10,  
+    wrap=True, 
+)
 try:
     plt.savefig(os.path.join(output_dir, "lasso_residual_plot.png"))
     print("Residual plot saved successfully.")
