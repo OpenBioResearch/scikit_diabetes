@@ -2,48 +2,36 @@
 
 ## Overview
 
-This project uses Scikit-learn to explore and model the diabetes dataset available within the library. The primary goal is to build a predictive model for diabetes progression using the K-Nearest Neighbors algorithm. The project also includes an analysis of feature correlations to understand the relationships between different variables and the target outcome. This project is most simply run using google colab.
+This project uses the scikit-learn diabetes dataset which consists of ten baseline variables and 442 diabetes patients. Included python scripts are designed for exploring the relationship between various factors and disease progression in the context of diabetes.
 
-## Usage
-The diabetes_sklearn.py script performs the following steps:
+## Installation and Usage
 
-Loads the diabetes dataset: Utilizes the built-in load_diabetes function from scikit-learn.
-Explores the data: Prints the dataset's keys, feature names, and a sample of target values (diabetes progression).
-Splits the data: Divides the dataset into training (80%) and testing (20%) sets.
-Builds a model: Trains a K-Nearest Neighbors regression model.
-Evaluates the model: Calculates and prints the R-squared score on the test set.
-Analyzes correlations: Creates a correlation matrix between features and visualizes it using a heatmap.
+**Clone the repository:**
 
-## Dependencies
-scikit-learn
-pandas
-seaborn
-matplotlib
-numpy
+    ```bash
+    git clone https://github.com/OpenBioResearch/scikit_diabetes.git
+    cd scikit_diabetes
+    ```
 
-## Dataset
-The project uses the diabetes dataset from the scikit-learn library. This dataset includes:
-Ten baseline variables: age, sex, body mass index, average blood pressure, and six blood serum measurements. A quantitative measure of disease progression one year after baseline.
+**Create a virtual environment (optional but recommended):**
 
-## Model
-The project uses a K-Nearest Neighbors regression model. This model predicts the target value (diabetes progression) by averaging the values of the closest neighbors in the feature space. The number of neighbors used is determined by the algorithm's default settings.
+    ```bash 
+    python -m venv .venv
+    source .venv/bin/activate  # git bash
+    ```
 
-## Results
-The script outputs the R-squared score of the model on the test set and displays a heatmap visualizing the correlations between the features.
+**Install the Python dependencies:**
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+**Run the python scriptS:**
+    diabetes_sklearn.py
+
+**Outputs**
+    diabetes-heatmap-feature-correlation.png
 
 ## License
 This project is licensed under the BSD 3-Clause
 
-## Project Structure
-
-* **.venv:** A virtual environment containing project dependencies.
-* **diabetes_sklearn.py:** The main Python script for data loading, exploration, model training, evaluation, and correlation visualization.
-* **.gitignore:**  Specifies files and folders to be excluded from version control (Git).
-* **README.md:** This documentation file.
-* **requirements.txt:** Specifies python project library dependencies.
-
-## Getting Started
-
-1. **Clone the Repository:** 
-   ```bash
-   git clone [https://github.com/](https://github.com/)<your-username>/scikit-learn-diabetes.git
