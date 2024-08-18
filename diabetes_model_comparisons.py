@@ -17,13 +17,11 @@ from sklearn.svm import SVR
 
 
 def create_output_directory(output_dir="outputs"):
-    """Creates the output directory if it doesn't exist."""
     os.makedirs(output_dir, exist_ok=True)
     return output_dir
 
 
 def load_data():
-    """Loads the diabetes dataset."""
     try:
         X, y = load_diabetes(return_X_y=True)
         return X, y
@@ -33,7 +31,7 @@ def load_data():
 
 
 def evaluate_models(models, X, y, cv):
-    """Evaluates models using cross-validation and returns results."""
+    """Evaluates models using cross-validation """
     results = []
     for model in models:
         mse_scores = -cross_val_score(
@@ -50,7 +48,7 @@ def evaluate_models(models, X, y, cv):
 
 
 def create_results_table(results, output_dir):
-    """Generates a table of results and saves it as a PNG image."""
+    """Generates results table and saves it as png """
     results_df = pd.DataFrame(results)
     results_df = results_df.round(2)
 
