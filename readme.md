@@ -2,35 +2,51 @@
 
 ## Overview
 
-This project uses the scikit-learn diabetes dataset which consists of ten baseline variables and 442 diabetes patients. Included python scripts are designed for exploring the relationship between various factors and disease progression in the context of diabetes.
+This project uses the scikit-learn diabetes dataset which consists of ten baseline variables and 442 diabetes patients. These simple python scripts are designed for exploring disease progression in the context of diabetes.
 
 ## Installation and Usage
 
 **Clone the repository:**
 
-    ```bash
-    git clone https://github.com/OpenBioResearch/scikit_diabetes.git
-    cd scikit_diabetes
-    ```
+```bash
+git clone https://github.com/OpenBioResearch/scikit_diabetes.git
+cd scikit_diabetes
+```
 
 **Create a virtual environment (optional but recommended):**
 
-    ```bash 
-    python -m venv .venv
-    source .venv/bin/activate  # git bash
-    ```
+```bash 
+python -m venv .venv
+source .venv/bin/activate  # git bash
+```
+
+**Activate the virtual environment:**
+
+Windows Git Bash:
+
+```bash
+source .venv/Scripts/activate
+```
+macOS/Linux:
+
+```bash
+source .venv/bin/activate
+```
 
 **Install the Python dependencies:**
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+```bash
+pip install -r requirements.txt
+```
 
-**Run the python scriptS:**
-    diabetes_sklearn.py
+**Run the python scripts:**
+```bash
+python diabetes_sklearn.py
+python diabetes_lasso_features.py
+python diabetes_model_comparisons.py
+```
 
-**Outputs**
-    diabetes-heatmap-feature-correlation.png
+
 
 ## License
 This project is licensed under the BSD 3-Clause
